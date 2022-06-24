@@ -1,0 +1,54 @@
+package com.vcare.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
+
+import com.vcare.beans.Prescription;
+import com.vcare.repository.PrescriptionRepository;
+
+@Service
+public class PrescriptionServiceImp implements PrescriptionService {
+
+	// Prescription Service
+	@Autowired
+	PrescriptionRepository prescriptionRepository;
+
+	@Override
+	public List<Prescription> getAllPrescription() {
+		return prescriptionRepository.findAll();
+	}
+
+	@Override
+	public Prescription getPrescriptionById(int prescriptionId) {
+		return prescriptionRepository.getById(prescriptionId);
+	}
+
+	@Override
+	public Prescription addPrescription(Prescription prescription) {
+		return prescriptionRepository.save(prescription);
+	}
+
+	@Override
+	public void updatePrescription(Prescription prescription) {
+		prescriptionRepository.save(prescription);
+	}
+
+	@Override
+	public void deletePrescriptionById(int prescriptionId) {
+		try {
+			prescriptionRepository.deleteById(prescriptionId);
+		} catch (DataAccessException ex) {
+			throw new RuntimeException(ex.getMessage());
+		}
+
+	}
+
+	@Override
+	public List<Prescription> getByPid(int pid) {
+		// TODO Auto-generated method stub
+		return prescriptionRepository.getByPid(pid);
+	}
+}

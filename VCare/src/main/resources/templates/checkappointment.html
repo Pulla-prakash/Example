@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+  </head>
+   
+    <body>
+ 		
+										<div class="col-md-3">
+											<label>Select Hospital</label>
+											<select>
+											<option class="col-md-6"></option>
+											 <option th:each="doctorList:${branchs}" 
+											 
+												th:text="${doctorList.hospitalBranchName}"
+												
+												/>
+												</select>
+										</div>
+									
+									
+										<script src="../js/dropdown.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+      
+    </body>
+</html>

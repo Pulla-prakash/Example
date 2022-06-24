@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Vcare</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="#" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" th:href="@{/dashboard/assets/css/final.css}" />
+</head>
+
+<body>
+
+	<!-- header -->
+	<header class="header">
+		<div class="container-fluid">
+			<div class="header-box">
+				<h4>Vcare</h4>
+				<a th:href="@{/logout}">LogOut</a>
+			</div>
+		</div>
+	</header>
+	<!-- header end -->
+	<main class="main">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-2 col-lg-3 col-md-4">
+					<!-- sidebar -->
+					<section class="sidebar">
+						<div class="sidebar-wrap">
+							<div class="Heading">
+								<h4>Dashboard</h4>
+							</div>
+
+							<div class="sidebar-item">
+								<img src="../images/Icons/pprofile.png" alt="icon" class="img-fluid" />
+								<a th:href="@{/List}">EmployeeList</a>
+							</div>
+						</div>
+					</section>
+					<!-- sidebar end -->
+				</div>
+				<!-- main area -->
+				<div class="col-lg-10 col-md-8">
+					<div class="main-area">
+						<!-- page Heading -->
+						<div class="page-heading">
+							<h2 th:text="${obj}"></h2>
+							<h2>Employee Form</h2>
+						</div>
+						<!-- page Heading End -->
+
+						<!-- abailablility -->
+
+						<div class="avaliability-box">
+							<div class="form-box">
+								<form th:action="@{/saveEmployee}" th:object="${employeeObj}" method="post"enctype="multipart/form-data">
+
+
+									<div class="col-md-4">
+										<label for="name"> </label>
+										<input type="hidden" class="form-control" id="employeeId" name="employeeId"
+											th:value="*{employeeId}" required="required" th:minlength="1"
+											th:maxlength="100">
+									</div>
+
+									<div class="row">
+										<div class="col-md-4">
+											<label for="sep"> Name</label>
+											<input type="text" class="form-control" id="employeeName"
+												name="employeeName" th:field="*{employeeName}" required="required"
+												th:minlength="1" th:maxlength="100">
+										</div>
+
+										<div class="col-md-8">
+											<label for="gender">Gender</label><br>
+											<select id="gender" name="gender" th:value="*{gender}">
+												<option value="none" selected>Gender</option>
+												<option value="male">Male</option>
+												<option value="female">Female</option>
+												<option value="other">Others</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-4">
+											<label for="sep">Blood Group</label>
+											<input type="text" class="form-control" id="bloodGroup" name="bloodGroup"
+												th:value="*{bloodGroup}" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+
+
+										<div class="col-md-4">
+											<label for="loc">Position</label>
+											<input type="text" class="form-control" id="employeePosition"
+												name="employeePosition" th:value="*{employeePosition}"
+												required="required" th:minlength="1" th:maxlength="100">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<label for="avl"> Contact No</label>
+											<input type="number" class="form-control" id="contactNo" name="contactNo"
+												 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required" th:minlength="1"
+												th:maxlength="20">
+										</div>
+
+
+
+										<div class="col-md-4">
+											<label for="avl"> Address</label>
+											<input type="text" class="form-control" id="address" name="address"
+												th:value="*{address}" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-4">
+											<label for="avl">Email</label>
+											<input type="email" class="form-control" id="email" name="email"
+												th:value="*{email}" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+
+
+
+										<div class="col-md-4">
+											<label for="avl">Password</label>
+											<input type="password" class="form-control" id="password" name="password"
+												th:value="*{password}"  th:minlength="1"
+												th:maxlength="100">
+										</div>
+									</div>
+   
+                                          <div class="row">
+										<div class="col-md-4">
+											<label for="avl">Pincode</label>
+											<input type="number" class="form-control" id="postCode" name="postCode"
+												 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+									
+
+									
+										<div class="col-md-4">
+											<label for="avl">State</label>
+											<input type="text" class="form-control" id="state" name="state"
+												th:value="*{state}" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+										</div>
+
+
+                                       <div class="row">
+										<div class="col-md-3">
+											<label for="avl">City</label>
+											<input type="text" class="form-control" id="city" name="city"
+												th:value="*{city}" required="required" th:minlength="1"
+												th:maxlength="100">
+										</div>
+										<div class="col-md-3">
+<label for="avl">upload profile</label>
+<input type="file"
+class="form-control" id=" profile" name="file"
+th:value="*{ profile}" required >
+</div>
+									
+
+
+									<!--       
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="fee"> </label>
+                         <input type="hidden"
+			class="form-control" id="departmentId" name="departmentId"
+			th:value="${departmentId}" required="required" th:minlength="1"
+			th:maxlength="100" placeholder="departmentId">
+                        </div>
+                    </div>	
+                    -->
+
+									
+										<div class="col-md-4">
+											<label for="fee">Select Department </label>
+
+											<select class="form-control" id="departmentId" name="departmentId"
+												th:feild="${department}" required="required" th:minlength="1"
+												th:maxlength="100">
+												<option value="-1">select </option>
+												<option th:each="entry:${Object.entrySet()}" th:value="${entry.key}"
+													th:text="${entry.value}" th:selected="${entry.key==department}">
+												</option>
+											</select>
+
+										</div>
+
+									</div>
+
+
+
+
+									<div class="row">
+
+										<div class="col-md-2">
+											<label for=""></label>
+											<button class="btn btn-danger btn-block">
+												save
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- abailablility -->
+				</div>
+			</div>
+		</div>
+		<!-- main area end -->
+		</div>
+	</main>
+
+	<!-- SCRIPTS -->
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/smoothscroll.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="./assets/js/script.js"></script> -->
+</body>
+
+
+</body>
+
+</html>
